@@ -184,7 +184,11 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
             mPrefs.registerOnSharedPreferenceChangeListener(BrowserSettings.this);
             if (Build.VERSION.CODENAME.equals("REL")) {
                 // This is a release build, always startup with debug disabled
-                setDebugEnabled(false);
+                /* add by Gary. start {{----------------------------------- */
+    			/* 2011-11-29 */
+    			/* enable the debug menu item */
+                setDebugEnabled(true);
+				/* add by Gary. end   -----------------------------------}} */
             }
             if (mPrefs.contains(PREF_TEXT_SIZE)) {
                 /*
@@ -694,7 +698,11 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         if (!isDebugEnabled()) {
             return 0;
         }
-        return Integer.parseInt(mPrefs.getString(PREF_USER_AGENT, "0"));
+	    /* modified by Gary. start {{----------------------------------- */
+	    /* 2011-11-29 */
+	    /* modify the default user agent */
+        return Integer.parseInt(mPrefs.getString(PREF_USER_AGENT, "3"));
+	    /* add by Gary. end   -----------------------------------}} */
     }
 
     // -----------------------------
@@ -719,14 +727,19 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         if (!isDebugEnabled()) {
             return false;
         }
-        return mPrefs.getBoolean(PREF_JAVASCRIPT_CONSOLE, true);
-    }
+		/* modified by Gary. start {{----------------------------------- */
+    	/* 2011-11-29 */
+    	/* add callback for parsing 3d source */
+        return mPrefs.getBoolean(PREF_JAVASCRIPT_CONSOLE, false);
+		/* add by Gary. end   -----------------------------------}} */
+	}
 
     public boolean isSmallScreen() {
         if (!isDebugEnabled()) {
             return false;
         }
         return mPrefs.getBoolean(PREF_SMALL_SCREEN, false);
+
     }
 
     public boolean isWideViewport() {

@@ -35,8 +35,12 @@ public class DebugPreferencesFragment extends PreferenceFragment
         // Load the XML preferences file
         addPreferencesFromResource(R.xml.debug_preferences);
 
-        Preference e = findPreference(PreferenceKeys.PREF_RESET_PRELOGIN);
-        e.setOnPreferenceClickListener(this);
+	    /* modified by Gary. start {{----------------------------------- */
+	    /* 2011-11-29 */
+	    /* delete some debug items */
+        //Preference e = findPreference(PreferenceKeys.PREF_RESET_PRELOGIN);
+        //e.setOnPreferenceClickListener(this);
+	    /* add by Gary. end   -----------------------------------}} */
     }
 
     @Override

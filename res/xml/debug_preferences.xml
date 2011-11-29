@@ -17,6 +17,11 @@
 <PreferenceScreen 
         xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!-- modified by Gary. starttttttttttttttttttttttttttttttttttttttt -->
+    <!-- 2011-11-29 -->
+    <!-- delete some debug items and modify the default user agent -->
+    <!--
+    
     <CheckBoxPreference
         android:key="enable_hardware_accel"
         android:defaultValue="true"
@@ -27,14 +32,18 @@
         android:defaultValue="false"
         android:title="@string/pref_development_hardware_accel_skia"
         android:enabled="false" />
-
+    
+    -->
+    
     <ListPreference
         android:key="user_agent"
         android:title="@string/pref_development_uastring"
         android:entries="@array/pref_development_ua_choices"
         android:entryValues="@array/pref_development_ua_values"
-        android:defaultValue="0"/>
+        android:defaultValue="3"/>
 
+    <!--
+    
     <CheckBoxPreference
         android:key="enable_visual_indicator"
         android:defaultValue="false"
@@ -45,8 +54,12 @@
         android:defaultValue="false"
         android:title="@string/pref_development_cpu_upload_path" />
 
+    -->
+
     <!-- The javascript console is enabled by default when the user has
          also enabled debug mode by navigating to about:debug. -->
+    <!--
+    
     <CheckBoxPreference
         android:key="javascript_console"
         android:defaultValue="true"
@@ -90,5 +103,8 @@
     <Preference
         android:key="reset_prelogin"
         android:title="@string/pref_development_reset_prelogin" />
+    -->
+
+    <!-- modified by Gary. enddddddddddddddddddddddddddddddddddddddddd -->
 
 </PreferenceScreen>

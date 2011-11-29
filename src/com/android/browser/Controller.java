@@ -1513,7 +1513,11 @@ public class Controller
 
         boolean showDebugSettings = mSettings.isDebugEnabled();
         final MenuItem counter = menu.findItem(R.id.dump_counters_menu_id);
-        counter.setVisible(showDebugSettings);
+		/* modified by Gary. start {{----------------------------------- */
+		/* 2011-11-29 */
+		/* hide the 'dump v8 counters' menu item */
+        counter.setVisible(false);
+		/* add by Gary. end   -----------------------------------}} */
         counter.setEnabled(showDebugSettings);
         final MenuItem uaSwitcher = menu.findItem(R.id.ua_desktop_menu_id);
         uaSwitcher.setChecked(isDesktopUa);
