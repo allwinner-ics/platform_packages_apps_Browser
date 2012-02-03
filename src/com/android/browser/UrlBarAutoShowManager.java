@@ -46,6 +46,7 @@ public class UrlBarAutoShowManager implements OnTouchListener,
     private boolean mHasTriggered;
     private long mLastScrollTime;
     private long mTriggeredTime;
+    private boolean mIsScrolling;
 
     public UrlBarAutoShowManager(BaseUi ui) {
         mUi = ui;
@@ -70,24 +71,24 @@ public class UrlBarAutoShowManager implements OnTouchListener,
     @Override
     public void onScrollChanged(int l, int t, int oldl, int oldt) {
         mLastScrollTime = SystemClock.uptimeMillis();
-        if (t != oldt) {
-            if (t != 0) {
-                // If it is showing, extend it
-                if (mUi.isTitleBarShowing()) {
-                    long remaining = mLastScrollTime - mTriggeredTime;
-                    remaining = Math.max(BaseUi.HIDE_TITLEBAR_DELAY - remaining,
-                            SCROLL_TIMEOUT_DURATION);
-                    mUi.showTitleBarForDuration(remaining);
-                }
-            } else {
-                mUi.suggestHideTitleBar();
+        mIsScrolling = true;
+        if (t != 0) {
+            // If it is showing, extend it
+            if (mUi.isTitleBarShowing()) {
+                long remaining = mLastScrollTime - mTriggeredTime;
+                remaining = Math.max(BaseUi.HIDE_TITLEBAR_DELAY - remaining,
+                        SCROLL_TIMEOUT_DURATION);
+                mUi.showTitleBarForDuration(remaining);
             }
+        } else {
+            mUi.suggestHideTitleBar();
         }
     }
 
     void stopTracking() {
         if (mIsTracking) {
             mIsTracking = false;
+            mIsScrolling = false;
             if (mUi.isTitleBarShowing()) {
                 mUi.showTitleBarForDuration();
             }
@@ -124,7 +125,8 @@ public class UrlBarAutoShowManager implements OnTouchListener,
                     float angle = (float) Math.atan2(ady, adx);
                     if (dy > mSlop && angle > V_TRIGGER_ANGLE
                             && !mUi.isTitleBarShowing()
-                            && web.getVisibleTitleHeight() == 0) {
+                            && (web.getVisibleTitleHeight() == 0
+                            || (!mIsScrolling && web.getScrollY() > 0))) {
                         mTriggeredTime = SystemClock.uptimeMillis();
                         mUi.showTitleBar();
                     }

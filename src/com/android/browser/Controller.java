@@ -80,7 +80,6 @@ import android.widget.Toast;
 
 import com.android.browser.IntentHandler.UrlData;
 import com.android.browser.UI.ComboViews;
-import com.android.browser.UI.DropdownChangeListener;
 import com.android.browser.provider.BrowserProvider;
 import com.android.browser.provider.BrowserProvider2.Thumbnails;
 import com.android.browser.provider.SnapshotProvider.Snapshots;
@@ -207,8 +206,6 @@ public class Controller
      * Only meaningful if mOptionsMenuOpen is true.
      */
     private boolean mExtendedMenuOpen;
-
-    private boolean mInLoad;
 
     private boolean mActivityPaused = true;
     private boolean mLoadStopped;
@@ -875,17 +872,16 @@ public class Controller
             // when the main frame completes loading regardless of the state of
             // any sub frames so calls to onProgressChanges may continue after
             // onPageFinished has executed)
-            if (mInLoad) {
-                mInLoad = false;
-                updateInLoadMenuItems(mCachedMenu);
+            if (tab.inPageLoad()) {
+                updateInLoadMenuItems(mCachedMenu, tab);
             }
         } else {
-            if (!mInLoad) {
+            if (!tab.inPageLoad()) {
                 // onPageFinished may have already been called but a subframe is
-                // still loading and updating the progress. Reset mInLoad and
+                // still loading
+                // updating the progress and
                 // update the menu items.
-                mInLoad = true;
-                updateInLoadMenuItems(mCachedMenu);
+                updateInLoadMenuItems(mCachedMenu, tab);
             }
         }
         mUi.onProgressChanged(tab);
@@ -1424,12 +1420,12 @@ public class Controller
      * we must manually update the state of the stop/reload menu
      * item
      */
-    private void updateInLoadMenuItems(Menu menu) {
+    private void updateInLoadMenuItems(Menu menu, Tab tab) {
         if (menu == null) {
             return;
         }
         MenuItem dest = menu.findItem(R.id.stop_reload_menu_id);
-        MenuItem src = mInLoad ?
+        MenuItem src = ((tab != null) && tab.inPageLoad()) ?
                 menu.findItem(R.id.stop_menu_id):
                 menu.findItem(R.id.reload_menu_id);
         if (src != null) {
@@ -1439,7 +1435,7 @@ public class Controller
     }
 
     boolean onPrepareOptionsMenu(Menu menu) {
-        updateInLoadMenuItems(menu);
+        updateInLoadMenuItems(menu, getCurrentTab());
         // hold on to the menu reference here; it is used by the page callbacks
         // to update the menu based on loading state
         mCachedMenu = menu;
@@ -1490,7 +1486,8 @@ public class Controller
         final MenuItem forward = menu.findItem(R.id.forward_menu_id);
         forward.setEnabled(canGoForward);
 
-        final MenuItem source = menu.findItem(mInLoad ? R.id.stop_menu_id : R.id.reload_menu_id);
+        final MenuItem source = menu.findItem(isInLoad() ? R.id.stop_menu_id
+                : R.id.reload_menu_id);
         final MenuItem dest = menu.findItem(R.id.stop_reload_menu_id);
         if (source != null && dest != null) {
             dest.setTitle(source.getTitle());
@@ -1577,7 +1574,7 @@ public class Controller
                 break;
 
             case R.id.stop_reload_menu_id:
-                if (mInLoad) {
+                if (isInLoad()) {
                     stopLoading();
                 } else {
                     getCurrentTopWebView().reload();
@@ -1628,12 +1625,20 @@ public class Controller
                         @Override
                         protected Long doInBackground(Tab... params) {
                             Uri result = cr.insert(Snapshots.CONTENT_URI, values);
+                            if (result == null) {
+                                return null;
+                            }
                             long id = ContentUris.parseId(result);
                             return id;
                         }
 
                         @Override
                         protected void onPostExecute(Long id) {
+                            if (id == null) {
+                                Toast.makeText(mActivity, R.string.snapshot_failed,
+                                        Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             Bundle b = new Bundle();
                             b.putLong(BrowserSnapshotPage.EXTRA_ANIMATE_ID, id);
                             mUi.showComboView(ComboViews.Snapshots, b);
@@ -1788,7 +1793,7 @@ public class Controller
                     // Switching the menu back to icon view, so show the
                     // title bar once again.
                     mExtendedMenuOpen = false;
-                    mUi.onExtendedMenuClosed(mInLoad);
+                    mUi.onExtendedMenuClosed(isInLoad());
                 }
             }
         } else {
@@ -1803,11 +1808,11 @@ public class Controller
 
     public void onOptionsMenuClosed(Menu menu) {
         mOptionsMenuOpen = false;
-        mUi.onOptionsMenuClosed(mInLoad);
+        mUi.onOptionsMenuClosed(isInLoad());
     }
 
     public void onContextMenuClosed(Menu menu) {
-        mUi.onContextMenuClosed(menu, mInLoad);
+        mUi.onContextMenuClosed(menu, isInLoad());
     }
 
     // Helper method for getting the top window.
@@ -1870,12 +1875,13 @@ public class Controller
      */
     public void onActionModeFinished(ActionMode mode) {
         if (!isInCustomActionMode()) return;
-        mUi.onActionModeFinished(mInLoad);
+        mUi.onActionModeFinished(isInLoad());
         mActionMode = null;
     }
 
     boolean isInLoad() {
-        return mInLoad;
+        final Tab tab = getCurrentTab();
+        return (tab != null) && tab.inPageLoad();
     }
 
     // bookmark handling
@@ -2220,7 +2226,10 @@ public class Controller
         removeSubWindow(tab);
         // dismiss the subwindow. This will destroy the WebView.
         tab.dismissSubWindow();
-        getCurrentTopWebView().requestFocus();
+        WebView wv = getCurrentTopWebView();
+        if (wv != null) {
+            wv.requestFocus();
+        }
     }
 
     @Override
@@ -2738,11 +2747,6 @@ public class Controller
                 AutoFillSettingsFragment.class.getName());
         mAutoFillSetupMessage = message;
         mActivity.startActivityForResult(intent, AUTOFILL_SETUP);
-    }
-
-    @Override
-    public void registerDropdownChangeListener(DropdownChangeListener d) {
-        mUi.registerDropdownChangeListener(d);
     }
 
     public boolean onSearchRequested() {

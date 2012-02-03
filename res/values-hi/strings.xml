@@ -52,7 +52,7 @@
     <string name="ssl_unknown" msgid="5679243486524754571">"अज्ञात प्रमाणपत्र त्रुटि."</string>
     <string name="stopping" msgid="4839698519340302982">"रोका जा रहा है…"</string>
     <string name="stop" msgid="5687251076030630074">"रोकें"</string>
-    <string name="reload" msgid="8585220783228408062">"रीफ़्रेश करें"</string>
+    <string name="reload" msgid="8585220783228408062">"रीफ़्रेश करें"</string>
     <string name="back" msgid="8414603107175713668">"वापस जाएं"</string>
     <string name="forward" msgid="4288210890526641577">"अग्रेषित करें"</string>
     <string name="save" msgid="5922311934992468496">"ठीक"</string>
@@ -86,7 +86,6 @@
     <string name="bookmark_needs_url" msgid="7809876865972755158">"बुकमार्क का कोई स्थान होना चाहिए."</string>
     <string name="bookmark_url_not_valid" msgid="4917440933384496211">"यह URL मान्‍य नहीं है."</string>
     <string name="bookmark_cannot_save_url" msgid="7836064647943671126">"इस URL को बुकमार्क नहीं किया जा सकता."</string>
-    <string name="delete_bookmark" msgid="2422989994934201992">"हटाएं"</string>
     <string name="bookmark_page" msgid="6845189305130307274">"देखे गए अंतिम पृष्ठ को बुकमार्क करें"</string>
     <string name="bookmark_thumbnail_view" msgid="3164068314718522138">"थंबनेल"</string>
     <string name="bookmark_list_view" msgid="7848510619500937839">"सूची"</string>
@@ -117,7 +116,7 @@
     <string name="contextmenu_view_image" msgid="3870625602053600905">"छवि देखें"</string>
     <string name="contextmenu_set_wallpaper" msgid="3691902960115350686">"वॉलपेपर के रूप में सेट करें"</string>
     <string name="contextmenu_dial_dot" msgid="5856550683415933806">"डायल करें…"</string>
-    <string name="contextmenu_add_contact" msgid="3183511922223645716">"संपर्क जोड़ें"</string>
+    <string name="contextmenu_add_contact" msgid="3183511922223645716">"संपर्क जोड़ें"</string>
     <string name="contextmenu_send_mail" msgid="1014513374828775660">"ईमेल भेजें"</string>
     <string name="contextmenu_map" msgid="7471390435434034912">"मानचित्र"</string>
     <string name="choosertitle_sharevia" msgid="4600490613341909086">"इसके द्वारा शेयर करें"</string>
@@ -149,7 +148,7 @@
     <item msgid="6092441301001006473">"सर्वाधिक देखी गई साइटें"</item>
     <item msgid="6569304572171444894">"अन्य"</item>
   </string-array>
-    <string name="pref_content_autofit" msgid="8260474534053660809">"स्वतः फ़िट पृष्ठ"</string>
+    <string name="pref_content_autofit" msgid="8260474534053660809">"स्वतः फ़िट पृष्ठ"</string>
     <string name="pref_content_autofit_summary" msgid="324810555822572112">"स्‍क्रीन में फ़िट करने के लिए वेबपृष्ठों को प्रारूपित करें"</string>
     <string name="pref_general_title" msgid="1946872771219249323">"सामान्य"</string>
     <string name="pref_general_sync_title" msgid="3138637035975860324">"समन्वयित करें"</string>
@@ -182,7 +181,6 @@
     <string name="autofill_profile_successful_save" msgid="5691459703493331983">"स्‍वत: भरण पाठ सहेजा गया."</string>
     <string name="autofill_profile_successful_delete" msgid="1790262652460723127">"स्‍वत: भरण पाठ हटाया गया."</string>
     <string name="autofill_profile_editor_delete_profile" msgid="3098369314558164153">"हटाएं"</string>
-    <string name="autofill_setup_dialog_title" msgid="3564907335366130582">"स्‍वत: भरण"</string>
     <string name="autofill_setup_dialog_message" msgid="1096164985825394616">"इसी की तरह ब्राउज़र स्‍वचालित रूप से वेब फ़ॉर्म पूर्ण कर सकता है. क्‍या आप अपना स्‍वत: भरण पाठ सेट करना चाहते हैं?"</string>
     <string name="autofill_setup_dialog_negative_toast" msgid="3288881675232206984">"आप कभी भी ब्राउज़र &gt; सेटिंग &gt; सामान्‍य स्‍क्रीन से अपना स्‍वत: भरण पाठ सेट कर सकते हैं."</string>
     <string name="disable_autofill" msgid="8305901059849400354">"स्‍वत: भरण अक्षम करें"</string>
@@ -252,7 +250,6 @@
     <string name="pref_extras_reset_default" msgid="8904000515846202110">"डिफ़ॉल्ट पर रीसेट करें"</string>
     <string name="pref_extras_reset_default_summary" msgid="4247870778270414501">"डिफ़ॉल्ट सेटिंग पुनर्स्थापित करें"</string>
     <string name="pref_extras_reset_default_dlg" msgid="7922814420184322450">"सेटिंग को डिफ़ॉल्ट मान पर लौटाएं?"</string>
-    <string name="pref_extras_reset_default_dlg_title" msgid="2250334970728938936">"डिफ़ॉल्ट पर रीसेट करें"</string>
     <string name="pref_development_title" msgid="3263854204533056480">"डीबग करें"</string>
     <string name="pref_default_text_encoding" msgid="5742965543955558478">"पाठ एन्कोडिंग"</string>
   <string-array name="pref_default_text_encoding_choices">
@@ -279,7 +276,7 @@
     <string name="pref_data_preload_title" msgid="4479320472980292873">"खोज परिणाम प्रीलोड हो रहा है"</string>
   <string-array name="pref_data_preload_choices">
     <item msgid="5180466923190095508">"कभी नहीं"</item>
-    <item msgid="3514802063791531888">"केवल WiFi पर"</item>
+    <item msgid="1791664748778640002">"केवल Wi-Fi पर"</item>
     <item msgid="3944061253437827617">"हमेशा"</item>
   </string-array>
     <string name="pref_data_preload_summary" msgid="3809168910751382727">"ब्राउज़र को पृष्ठभूमि में अधिक विश्‍वसनीय खोज परिणाम प्रीलोड करने दें"</string>
@@ -299,7 +296,6 @@
     <string name="search_hint" msgid="4647356319916631820">"URL खोजें या लिखें"</string>
     <string name="search_button_text" msgid="5235226933877634410">"जाएं"</string>
     <string name="search_settings_description" msgid="1422401062529014107">"बुकमार्क और वेब इतिहास"</string>
-    <string name="attention" msgid="3473639060042811244">"ध्यान दें"</string>
     <string name="popup_window_attempt" msgid="31565781154067629">"इस साइट को पॉप-अप विंडो खोलने दें?"</string>
     <string name="allow" msgid="1157313689171991335">"अनुमति दें"</string>
     <string name="block" msgid="9172175889884707800">"अवरुद्ध करें"</string>
@@ -307,19 +303,6 @@
     <string name="too_many_windows_dialog_message" msgid="3644234634638290304">"जब तक आप एक टैब बंद न कर दें तब तक नया टैब नहीं खोल सकता."</string>
     <string name="too_many_subwindows_dialog_title" msgid="3805453941587725944">"पॉप-अप पहले से खुला है"</string>
     <string name="too_many_subwindows_dialog_message" msgid="2164725447981195556">"एक समय में केवल एक पॉप-अप ही खोला जा सकता है."</string>
-    <string name="download_title" msgid="2122874021047565594">"डाउनलोड इतिहास"</string>
-    <string name="download_unknown_filename" msgid="4013465542563652175">"&lt;अज्ञात&gt;"</string>
-    <string name="download_menu_open" msgid="4888327480367757513">"खोलें"</string>
-    <string name="download_menu_clear" msgid="6264454531553418124">"सूची से साफ़ करें"</string>
-    <string name="download_menu_delete" msgid="8815502136393894148">"हटाएं"</string>
-    <string name="download_menu_cancel" msgid="2545333007601851574">"डाउनलोड रद्द करें"</string>
-    <string name="download_menu_cancel_all" msgid="2136550823151999166">"सभी डाउनलोड रद्द करें"</string>
-    <string name="download_cancel_dlg_title" msgid="8909108500262799748">"डाउनलोड रद्द करें"</string>
-    <string name="download_cancel_dlg_msg" msgid="2546124668173027248">"रद्द करें और डाउनलोड इतिहास से सभी <xliff:g id="DOWNLOAD_COUNT">%d</xliff:g> डाउनलोड साफ़ करें?"</string>
-    <string name="download_delete_file" msgid="8941963362686617405">"हटाएं"</string>
-    <string name="download_file_error_dlg_title" msgid="2693630283595384874">"स्थान नहीं है"</string>
-    <string name="download_file_error_dlg_msg" msgid="5904538987107408124">"<xliff:g id="FILENAME">%s</xliff:g> डाउनलोड नहीं की जा सकी."\n"कुछ स्‍थान खाली करें और पुन: प्रयास करें."</string>
-    <string name="download_failed_generic_dlg_title" msgid="6106781095337833391">"डाउनलोड असफल"</string>
     <string name="download_no_sdcard_dlg_title" product="nosdcard" msgid="56777245081568508">"USB संग्रहण अनुपलब्ध"</string>
     <string name="download_no_sdcard_dlg_title" product="default" msgid="605904452159416792">"कोई SD कार्ड नहीं"</string>
     <string name="download_no_sdcard_dlg_msg" product="nosdcard" msgid="3144652102051031721">" <xliff:g id="FILENAME">%s</xliff:g> डाउनलोड करने के लिए USB संग्रहण की आवश्यकता है."</string>
@@ -329,25 +312,12 @@
     <string name="download_sdcard_busy_dlg_msg" product="nosdcard" msgid="8412543086906716875">"USB संग्रहण व्यस्त है. डाउनलोड की अनुमति देने के लिए, सूचना में USB संग्रहण बंद करें को स्पर्श करें."</string>
     <string name="download_sdcard_busy_dlg_msg" product="default" msgid="2629425950473358591">"SD कार्ड व्यस्त है. डाउनलोड की अनुमति देने के लिए, सूचना में USB संग्रहण बंद करें स्पर्श करें."</string>
     <string name="cannot_download" msgid="8150552478556798780">"केवल \"http\" या \"https\" URL डाउनलोड कर सकता है."</string>
-    <string name="download_no_application_title" msgid="4809479884191068159">"फ़ाइल नहीं खोली जा सकती"</string>
-    <string name="retry" msgid="1835923075542266721">"पुन: प्रयास करें"</string>
-    <string name="no_downloads" msgid="8031648287973400156">"कोई डाउनलोड इतिहास नहीं."</string>
-    <string name="download_error" msgid="21835634921715697">"डाउनलोड नहीं किया जा सका."</string>
-    <string name="download_success" msgid="1651605015937749469">"<xliff:g id="FILE">%s</xliff:g> डाउनलोड पूर्ण."</string>
-    <string name="download_running" msgid="2622942231322015059">"डाउनलोड हो रहा है..."</string>
     <string name="download_pending" msgid="2599683668575349559">"डाउनलोड प्रारंभ कर रहा है…"</string>
-    <string name="download_pending_network" msgid="6548714525679461053">"डेटा कनेक्शन की प्रतीक्षा कर रहा है…"</string>
-    <string name="download_running_paused" msgid="6418029352085656495">"डेटा कनेक्शन की प्रतीक्षा कर रहा है…"</string>
-    <string name="download_canceled" msgid="6057083743144492515">"डाउनलोड रद्द."</string>
-    <string name="download_not_acceptable" msgid="5415339992984899924">"इस फ़ोन पर सामग्री समर्थित नहीं होने के कारण उसे डाउनलोड नहीं किया जा सकता."</string>
-    <string name="download_file_error" msgid="7702971488793861815">"पर्याप्त स्‍थान नहीं होने के कारण डाउनलोड पूर्ण नहीं कर सका."</string>
-    <string name="download_length_required" msgid="1240338682223054142">"आइटम का आकार निर्धारित नहीं हो सकने के कारण डाउनलोड नहीं किया जा सकता."</string>
-    <string name="download_precondition_failed" msgid="6264432738865797635">"डाउनलोड बाधित हुआ और इसे फिर से शुरू नहीं किया जा सकता."</string>
+    <string name="help_page" msgid="2906208423557552540">"सहायता"</string>
     <string name="search_the_web" msgid="6046130189241962337">"वेब पर खोजें"</string>
     <string name="webstorage_outofspace_notification_title" msgid="1160474608059771788">"ब्राउज़र संग्रहण भर गया है"</string>
     <string name="webstorage_outofspace_notification_text" msgid="47273584426988640">"स्थान खाली करने के लिए स्‍पर्श करें."</string>
     <string name="webstorage_clear_data_title" msgid="689484577124333977">"संग्रहीत डेटा साफ़ करें"</string>
-    <string name="webstorage_clear_data_dialog_title" msgid="345457466368974706">"संग्रहीत डेटा साफ़ करें"</string>
     <string name="webstorage_clear_data_dialog_message" msgid="6200681632891775881">"इस वेबसाइट द्वारा संग्रहीत सभी डेटा हटाएं?"</string>
     <string name="webstorage_clear_data_dialog_ok_button" msgid="6682570951259237542">"ठीक"</string>
     <string name="webstorage_clear_data_dialog_cancel_button" msgid="2028867751958942762">"रद्द करें"</string>
@@ -362,12 +332,10 @@
     <string name="geolocation_settings_page_title" msgid="1745477985097536528">"स्थान पहुंच साफ़ करें"</string>
     <string name="geolocation_settings_page_summary_allowed" msgid="9180251524290811398">"अभी यह साइट आपके स्थान पर पहुंच सकती है"</string>
     <string name="geolocation_settings_page_summary_not_allowed" msgid="7941769772784366199">"अभी यह साइट आपके स्थान पर नहीं पहुंच सकती"</string>
-    <string name="geolocation_settings_page_dialog_title" msgid="1549842043381347668">"स्थान पहुंच साफ़ करें"</string>
     <string name="geolocation_settings_page_dialog_message" msgid="8772923416296868537">"इस वेबसाइट के लिए स्थान पहुंच साफ़ करें?"</string>
     <string name="geolocation_settings_page_dialog_ok_button" msgid="2113465477131017852">"ठीक"</string>
     <string name="geolocation_settings_page_dialog_cancel_button" msgid="7941036504673409747">"रद्द करें"</string>
     <string name="website_settings_clear_all" msgid="8739804325997655980">"सभी साफ़ करें"</string>
-    <string name="website_settings_clear_all_dialog_title" msgid="5746255931965842184">"सभी साफ़ करें"</string>
     <string name="website_settings_clear_all_dialog_message" msgid="1551164275687475061">"सभी वेबसाइट डेटा और स्‍थान अनुमतियां हटाएं?"</string>
     <string name="website_settings_clear_all_dialog_ok_button" msgid="7858504776529106243">"ठीक"</string>
     <string name="website_settings_clear_all_dialog_cancel_button" msgid="1896757051856611674">"रद्द करें"</string>
@@ -410,7 +378,7 @@
     <string name="accessibility_button_closetab" msgid="6954807842756927737">"टैब बंद करें"</string>
     <string name="accessibility_button_newtab" msgid="4116986240706315748">"नया टैब खोलें"</string>
     <string name="accessibility_button_newincognitotab" msgid="5254901889040012964">"नया गुप्त टैब खोलें"</string>
-    <string name="accessibility_button_clear" msgid="6943152307986161598">"इनपुट साफ़ करें"</string>
+    <string name="accessibility_button_clear" msgid="6943152307986161598">"इनपुट साफ़ करें"</string>
     <string name="accessibility_button_uaswitch" msgid="6286804719724282339">"उपयोगकर्ता एजेंट स्विच करें"</string>
     <string name="accessibility_button_go" msgid="1182818872083055958">"जाएं"</string>
     <string name="accessibility_button_navscreen" msgid="9142904748728713075">"पृष्ठ प्रबंधक"</string>

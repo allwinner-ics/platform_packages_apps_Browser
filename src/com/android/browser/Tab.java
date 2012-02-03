@@ -20,13 +20,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
@@ -73,7 +71,6 @@ import android.widget.Toast;
 
 import com.android.browser.TabControl.OnThumbnailUpdatedListener;
 import com.android.browser.homepages.HomeProvider;
-import com.android.browser.provider.BrowserProvider2.Thumbnails;
 import com.android.browser.provider.SnapshotProvider.Snapshots;
 import com.android.common.speech.LoggingEvents;
 
@@ -622,7 +619,6 @@ class Tab implements PictureListener {
                 LogTag.logPageFinishedLoading(
                         url, SystemClock.uptimeMillis() - mLoadStartTime);
             }
-            mInPageLoad = false;
             syncCurrentState(view, url);
             mWebViewController.onPageFinished(Tab.this);
         }
@@ -685,12 +681,12 @@ class Tab implements PictureListener {
                     errorCode != WebViewClient.ERROR_UNSUPPORTED_SCHEME &&
                     errorCode != WebViewClient.ERROR_FILE) {
                 queueError(errorCode, description);
-            }
 
-            // Don't log URLs when in private browsing mode
-            if (!isPrivateBrowsingEnabled()) {
-                Log.e(LOGTAG, "onReceivedError " + errorCode + " " + failingUrl
+                // Don't log URLs when in private browsing mode
+                if (!isPrivateBrowsingEnabled()) {
+                    Log.e(LOGTAG, "onReceivedError " + errorCode + " " + failingUrl
                         + " " + description);
+                }
             }
         }
 
@@ -1014,7 +1010,6 @@ class Tab implements PictureListener {
             // Build a confirmation dialog to display to the user.
             final AlertDialog d =
                     new AlertDialog.Builder(mContext)
-                    .setTitle(R.string.attention)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setMessage(R.string.popup_window_attempt)
                     .setPositiveButton(R.string.allow, allowListener)
@@ -1048,6 +1043,9 @@ class Tab implements PictureListener {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             mPageLoadProgress = newProgress;
+            if (newProgress == 100) {
+                mInPageLoad = false;
+            }
             mWebViewController.onProgressChanged(Tab.this);
         }
 
@@ -1266,7 +1264,6 @@ class Tab implements PictureListener {
             final View layout = inflater.inflate(R.layout.setup_autofill_dialog, null);
 
             builder.setView(layout)
-                .setTitle(R.string.autofill_setup_dialog_title)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -2015,7 +2012,7 @@ class Tab implements PictureListener {
         mCurrentState.mTitle = title;
         synchronized (Tab.this) {
             if (mCapture != null) {
-                BackgroundHandler.execute(mLoadThumbnail);
+                DataController.getInstance(mContext).loadThumbnail(this);
             }
         }
     }
@@ -2095,6 +2092,9 @@ class Tab implements PictureListener {
 
     protected void capture() {
         if (mMainView == null || mCapture == null) return;
+        if (mMainView.getContentWidth() <= 0 || mMainView.getContentHeight() <= 0) {
+            return;
+        }
         Canvas c = new Canvas(mCapture);
         final int left = mMainView.getScrollX();
         final int top = mMainView.getScrollY() + mMainView.getVisibleTitleHeight();
@@ -2172,14 +2172,14 @@ class Tab implements PictureListener {
     }
 
     protected void persistThumbnail() {
-        BackgroundHandler.execute(mSaveThumbnail);
+        DataController.getInstance(mContext).saveThumbnail(this);
     }
 
     protected void deleteThumbnail() {
-        BackgroundHandler.execute(mDeleteThumbnail);
+        DataController.getInstance(mContext).deleteThumbnail(this);
     }
 
-    private void updateCaptureFromBlob(byte[] blob) {
+    void updateCaptureFromBlob(byte[] blob) {
         synchronized (Tab.this) {
             if (mCapture == null) {
                 return;
@@ -2195,76 +2195,6 @@ class Tab implements PictureListener {
             }
         }
     }
-
-    private static final ThreadLocal<ByteBuffer> sBuffer = new ThreadLocal<ByteBuffer>();
-
-    private byte[] getCaptureBlob() {
-        synchronized (Tab.this) {
-            if (mCapture == null) {
-                return null;
-            }
-            ByteBuffer buffer = sBuffer.get();
-            if (buffer == null || buffer.limit() < mCapture.getByteCount()) {
-                buffer = ByteBuffer.allocate(mCapture.getByteCount());
-                sBuffer.set(buffer);
-            }
-            mCapture.copyPixelsToBuffer(buffer);
-            buffer.rewind();
-            return buffer.array();
-        }
-    }
-
-    private Runnable mSaveThumbnail = new Runnable() {
-
-        @Override
-        public void run() {
-            byte[] blob = getCaptureBlob();
-            if (blob == null) {
-                return;
-            }
-            ContentResolver cr = mContext.getContentResolver();
-            ContentValues values = new ContentValues();
-            values.put(Thumbnails._ID, mId);
-            values.put(Thumbnails.THUMBNAIL, blob);
-            cr.insert(Thumbnails.CONTENT_URI, values);
-        }
-    };
-
-    private Runnable mDeleteThumbnail = new Runnable() {
-
-        @Override
-        public void run() {
-            ContentResolver cr = mContext.getContentResolver();
-            try {
-                cr.delete(ContentUris.withAppendedId(Thumbnails.CONTENT_URI, mId),
-                        null, null);
-            } catch (Throwable t) {}
-        }
-    };
-
-    private Runnable mLoadThumbnail = new Runnable() {
-
-        @Override
-        public void run() {
-            ContentResolver cr = mContext.getContentResolver();
-            Cursor c = null;
-            try {
-                Uri uri = ContentUris.withAppendedId(Thumbnails.CONTENT_URI, mId);
-                c = cr.query(uri, new String[] {Thumbnails._ID,
-                        Thumbnails.THUMBNAIL}, null, null, null);
-                if (c.moveToFirst()) {
-                    byte[] data = c.getBlob(1);
-                    if (data != null && data.length > 0) {
-                        updateCaptureFromBlob(data);
-                    }
-                }
-            } finally {
-                if (c != null) {
-                    c.close();
-                }
-            }
-        }
-    };
 
     @Override
     public String toString() {

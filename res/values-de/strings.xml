@@ -66,7 +66,7 @@
     <string name="no_subfolders" msgid="3303645239686962674">"Keine Unterordner"</string>
     <string name="add_to_bookmarks_menu_option" msgid="4449323955122214389">"Lesezeichen"</string>
     <string name="add_to_homescreen_menu_option" msgid="1461447829242963790">"Startbildschirm"</string>
-    <string name="add_to_other_folder_menu_option" msgid="5947586525822134105">"Anderer Ordner"</string>
+    <string name="add_to_other_folder_menu_option" msgid="5947586525822134105">"Sonstiger Ordner"</string>
     <string name="name" msgid="5462672162695365387">"Label"</string>
     <string name="http" msgid="2163722670597250102">"http://"</string>
     <string name="save_to_bookmarks" msgid="1679286010089780932">"Als Lesezeichen speichern"</string>
@@ -79,14 +79,13 @@
     <string name="remove_from_bookmarks" msgid="4374080666576982775">"Aus Lesezeichen entfernen"</string>
     <string name="remove_history_item" msgid="5021424935726728618">"Aus Verlauf entfernen"</string>
     <string name="set_as_homepage" msgid="4752937379414905560">"Als Startseite festlegen"</string>
-    <string name="bookmark_saved" msgid="2766434679871317557">"Gespeichert in Lesezeichen."</string>
+    <string name="bookmark_saved" msgid="2766434679871317557">"Gespeichert in Lesezeichen"</string>
     <string name="bookmark_not_saved" msgid="1077732557310662080">"Lesezeichen konnte nicht gespeichert werden."</string>
     <string name="homepage_set" msgid="8768087280310966395">"Startseite festgelegt."</string>
     <string name="bookmark_needs_title" msgid="6245900436119218187">"Das Lesezeichen muss über einen Namen verfügen."</string>
     <string name="bookmark_needs_url" msgid="7809876865972755158">"Das Lesezeichen muss über einen Speicherort verfügen."</string>
     <string name="bookmark_url_not_valid" msgid="4917440933384496211">"Diese URL ist ungültig."</string>
     <string name="bookmark_cannot_save_url" msgid="7836064647943671126">"Diese URL kann nicht als Lesezeichen gespeichert werden."</string>
-    <string name="delete_bookmark" msgid="2422989994934201992">"Löschen"</string>
     <string name="bookmark_page" msgid="6845189305130307274">"Lesezeichen für zuletzt besuchte Seite"</string>
     <string name="bookmark_thumbnail_view" msgid="3164068314718522138">"Miniaturansichten"</string>
     <string name="bookmark_list_view" msgid="7848510619500937839">"Liste"</string>
@@ -146,7 +145,7 @@
     <item msgid="844041670142910837">"Aktuelle Seite"</item>
     <item msgid="4430498748295169195">"Leere Seite"</item>
     <item msgid="5747608191946904074">"Standardseite"</item>
-    <item msgid="6092441301001006473">"Am häufigsten besuchte Websites"</item>
+    <item msgid="6092441301001006473">"Meistbesuchte Websites"</item>
     <item msgid="6569304572171444894">"Andere"</item>
   </string-array>
     <string name="pref_content_autofit" msgid="8260474534053660809">"Autom. Anpassung"</string>
@@ -154,7 +153,7 @@
     <string name="pref_general_title" msgid="1946872771219249323">"Allgemein"</string>
     <string name="pref_general_sync_title" msgid="3138637035975860324">"Synchronisierung"</string>
     <string name="pref_general_autofill_title" msgid="547881256865816858">"AutoFill"</string>
-    <string name="pref_autofill_enabled" msgid="1015751713312396713">"Formular autom. ausf."</string>
+    <string name="pref_autofill_enabled" msgid="1015751713312396713">"Automatisch ausfüllen"</string>
     <string name="pref_autofill_enabled_summary" msgid="7659954073892471496">"Webformulare mit einer einzigen Berührung ausfüllen"</string>
     <string name="pref_autofill_profile_editor" msgid="8934844472922113166">"AutoFill-Text"</string>
     <string name="pref_autofill_profile_editor_summary" msgid="4864447251676856190">"AutoFill-Text für Webformulare einrichten"</string>
@@ -182,7 +181,6 @@
     <string name="autofill_profile_successful_save" msgid="5691459703493331983">"AutoFill-Text gespeichert"</string>
     <string name="autofill_profile_successful_delete" msgid="1790262652460723127">"AutoFill-Text gelöscht"</string>
     <string name="autofill_profile_editor_delete_profile" msgid="3098369314558164153">"Löschen"</string>
-    <string name="autofill_setup_dialog_title" msgid="3564907335366130582">"AutoFill"</string>
     <string name="autofill_setup_dialog_message" msgid="1096164985825394616">"Webformulare dieser Art können vom Browser automatisch ausgefüllt werden. Möchten Sie Formulare automatisch ausfüllen?"</string>
     <string name="autofill_setup_dialog_negative_toast" msgid="3288881675232206984">"Den AutoFill-Text können Sie jederzeit im Browser unter &gt; \"Einstellungen\" &gt; \"Allgemein\" einrichten."</string>
     <string name="disable_autofill" msgid="8305901059849400354">"AutoFill deaktivieren"</string>
@@ -252,7 +250,6 @@
     <string name="pref_extras_reset_default" msgid="8904000515846202110">"Zurück auf Standard"</string>
     <string name="pref_extras_reset_default_summary" msgid="4247870778270414501">"Standardeinstellungen wiederherstellen"</string>
     <string name="pref_extras_reset_default_dlg" msgid="7922814420184322450">"Standardeinstellungen wiederherstellen?"</string>
-    <string name="pref_extras_reset_default_dlg_title" msgid="2250334970728938936">"Auf Standard zurücksetzen"</string>
     <string name="pref_development_title" msgid="3263854204533056480">"Debuggen"</string>
     <string name="pref_default_text_encoding" msgid="5742965543955558478">"Textcodierung"</string>
   <string-array name="pref_default_text_encoding_choices">
@@ -279,7 +276,7 @@
     <string name="pref_data_preload_title" msgid="4479320472980292873">"Suchergebnisse vorabladen"</string>
   <string-array name="pref_data_preload_choices">
     <item msgid="5180466923190095508">"Nie"</item>
-    <item msgid="3514802063791531888">"Nur bei WLAN"</item>
+    <item msgid="1791664748778640002">"Nur bei WLAN"</item>
     <item msgid="3944061253437827617">"Immer"</item>
   </string-array>
     <string name="pref_data_preload_summary" msgid="3809168910751382727">"Browser kann vertrauenswürdige Suchergebnisse vorab im Hintergrund laden"</string>
@@ -299,7 +296,6 @@
     <string name="search_hint" msgid="4647356319916631820">"Suchen oder URL eingeben"</string>
     <string name="search_button_text" msgid="5235226933877634410">"Los"</string>
     <string name="search_settings_description" msgid="1422401062529014107">"Lesezeichen und Webprotokoll"</string>
-    <string name="attention" msgid="3473639060042811244">"Achtung"</string>
     <string name="popup_window_attempt" msgid="31565781154067629">"Pop-up-Fenster auf dieser Website zulassen?"</string>
     <string name="allow" msgid="1157313689171991335">"Zulassen"</string>
     <string name="block" msgid="9172175889884707800">"Blockieren"</string>
@@ -307,19 +303,6 @@
     <string name="too_many_windows_dialog_message" msgid="3644234634638290304">"Schließen Sie zum Öffnen eines neuen Tabs zunächst einen anderen Tab."</string>
     <string name="too_many_subwindows_dialog_title" msgid="3805453941587725944">"Pop-up ist bereits geöffnet"</string>
     <string name="too_many_subwindows_dialog_message" msgid="2164725447981195556">"Es kann jeweils nur ein Pop-up-Fenster geöffnet werden."</string>
-    <string name="download_title" msgid="2122874021047565594">"Downloadverlauf"</string>
-    <string name="download_unknown_filename" msgid="4013465542563652175">"&lt;Unbekannt&gt;"</string>
-    <string name="download_menu_open" msgid="4888327480367757513">"Öffnen"</string>
-    <string name="download_menu_clear" msgid="6264454531553418124">"Aus Liste löschen"</string>
-    <string name="download_menu_delete" msgid="8815502136393894148">"Löschen"</string>
-    <string name="download_menu_cancel" msgid="2545333007601851574">"Download abbrechen"</string>
-    <string name="download_menu_cancel_all" msgid="2136550823151999166">"Alle Downloads abbrechen"</string>
-    <string name="download_cancel_dlg_title" msgid="8909108500262799748">"Downloads abbrechen"</string>
-    <string name="download_cancel_dlg_msg" msgid="2546124668173027248">"Alle <xliff:g id="DOWNLOAD_COUNT">%d</xliff:g> Downloads abbrechen und aus dem Downloadverlauf löschen?"</string>
-    <string name="download_delete_file" msgid="8941963362686617405">"Löschen"</string>
-    <string name="download_file_error_dlg_title" msgid="2693630283595384874">"Kein freier Speicher vorhanden"</string>
-    <string name="download_file_error_dlg_msg" msgid="5904538987107408124">"<xliff:g id="FILENAME">%s</xliff:g> konnte nicht heruntergeladen werden."\n"Geben Sie Speicherplatz frei und versuchen Sie es noch einmal."</string>
-    <string name="download_failed_generic_dlg_title" msgid="6106781095337833391">"Download fehlgeschlagen"</string>
     <string name="download_no_sdcard_dlg_title" product="nosdcard" msgid="56777245081568508">"Kein USB-Speicher"</string>
     <string name="download_no_sdcard_dlg_title" product="default" msgid="605904452159416792">"Keine SD-Karte"</string>
     <string name="download_no_sdcard_dlg_msg" product="nosdcard" msgid="3144652102051031721">"Sie benötigen einen USB-Speicher, um <xliff:g id="FILENAME">%s</xliff:g> herunterzuladen."</string>
@@ -329,25 +312,12 @@
     <string name="download_sdcard_busy_dlg_msg" product="nosdcard" msgid="8412543086906716875">"Der USB-Speicher ist ausgelastet. Tippen Sie in der Benachrichtigung auf \"USB-Speicher deaktivieren\", um Downloads zuzulassen."</string>
     <string name="download_sdcard_busy_dlg_msg" product="default" msgid="2629425950473358591">"Die SD-Karte ist ausgelastet. Tippen Sie in der Benachrichtigung auf \"USB-Speicher deaktivieren\", um Downloads zuzulassen."</string>
     <string name="cannot_download" msgid="8150552478556798780">"Nur Download von URLs mit \"http\" oder \"https\" möglich"</string>
-    <string name="download_no_application_title" msgid="4809479884191068159">"Datei kann nicht geöffnet werden."</string>
-    <string name="retry" msgid="1835923075542266721">"Wiederholen"</string>
-    <string name="no_downloads" msgid="8031648287973400156">"Kein Downloadverlauf"</string>
-    <string name="download_error" msgid="21835634921715697">"Download nicht möglich"</string>
-    <string name="download_success" msgid="1651605015937749469">"Download von <xliff:g id="FILE">%s</xliff:g> abgeschlossen."</string>
-    <string name="download_running" msgid="2622942231322015059">"Downloadvorgang läuft..."</string>
     <string name="download_pending" msgid="2599683668575349559">"Download wird gestartet…"</string>
-    <string name="download_pending_network" msgid="6548714525679461053">"Warten auf Datenverbindung..."</string>
-    <string name="download_running_paused" msgid="6418029352085656495">"Warten auf Datenverbindung..."</string>
-    <string name="download_canceled" msgid="6057083743144492515">"Download abgebrochen."</string>
-    <string name="download_not_acceptable" msgid="5415339992984899924">"Der Download kann nicht durchgeführt werden, da der Inhalt auf diesem Telefon nicht unterstützt wird."</string>
-    <string name="download_file_error" msgid="7702971488793861815">"Download kann nicht beendet werden, da nicht genügend Speicherplatz vorhanden ist."</string>
-    <string name="download_length_required" msgid="1240338682223054142">"Download kann nicht gestartet werden, da die Größe der Datei nicht bestimmt werden kann."</string>
-    <string name="download_precondition_failed" msgid="6264432738865797635">"Der Download wurde unterbrochen und kann nicht fortgesetzt werden."</string>
+    <string name="help_page" msgid="2906208423557552540">"Hilfe"</string>
     <string name="search_the_web" msgid="6046130189241962337">"Im Web suchen"</string>
     <string name="webstorage_outofspace_notification_title" msgid="1160474608059771788">"Browserspeicher voll"</string>
     <string name="webstorage_outofspace_notification_text" msgid="47273584426988640">"Zur Freigabe von Speicherplatz berühren"</string>
     <string name="webstorage_clear_data_title" msgid="689484577124333977">"Gespeicherte Daten löschen"</string>
-    <string name="webstorage_clear_data_dialog_title" msgid="345457466368974706">"Gespeicherte Daten löschen"</string>
     <string name="webstorage_clear_data_dialog_message" msgid="6200681632891775881">"Alle von dieser Website gespeicherten Daten löschen?"</string>
     <string name="webstorage_clear_data_dialog_ok_button" msgid="6682570951259237542">"OK"</string>
     <string name="webstorage_clear_data_dialog_cancel_button" msgid="2028867751958942762">"Abbrechen"</string>
@@ -362,12 +332,10 @@
     <string name="geolocation_settings_page_title" msgid="1745477985097536528">"Standortzugriff löschen"</string>
     <string name="geolocation_settings_page_summary_allowed" msgid="9180251524290811398">"Website hat Zugriff auf Ihren Standort."</string>
     <string name="geolocation_settings_page_summary_not_allowed" msgid="7941769772784366199">"Diese Website hat zurzeit keinen Zugriff auf Ihren Standort."</string>
-    <string name="geolocation_settings_page_dialog_title" msgid="1549842043381347668">"Standortzugriff löschen"</string>
     <string name="geolocation_settings_page_dialog_message" msgid="8772923416296868537">"Standortzugriff für diese Website löschen?"</string>
     <string name="geolocation_settings_page_dialog_ok_button" msgid="2113465477131017852">"OK"</string>
     <string name="geolocation_settings_page_dialog_cancel_button" msgid="7941036504673409747">"Abbrechen"</string>
     <string name="website_settings_clear_all" msgid="8739804325997655980">"Alles löschen"</string>
-    <string name="website_settings_clear_all_dialog_title" msgid="5746255931965842184">"Alle löschen"</string>
     <string name="website_settings_clear_all_dialog_message" msgid="1551164275687475061">"Alle Website-Daten und Standortberechtigungen löschen?"</string>
     <string name="website_settings_clear_all_dialog_ok_button" msgid="7858504776529106243">"OK"</string>
     <string name="website_settings_clear_all_dialog_cancel_button" msgid="1896757051856611674">"Abbrechen"</string>

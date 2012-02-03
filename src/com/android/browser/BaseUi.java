@@ -493,11 +493,6 @@ public abstract class BaseUi implements UI {
     }
 
     @Override
-    public void registerDropdownChangeListener(DropdownChangeListener d) {
-        mNavigationBar.registerDropdownChangeListener(d);
-    }
-
-    @Override
     public void showComboView(ComboViews startingView, Bundle extras) {
         Intent intent = new Intent(mActivity, ComboViewActivity.class);
         intent.putExtra(ComboViewActivity.EXTRA_INITIAL_VIEW, startingView.name());
@@ -757,11 +752,6 @@ public abstract class BaseUi implements UI {
         final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         if (enabled) {
             winParams.flags |=  bits;
-            if (mCustomView != null) {
-                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            } else {
-                mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            }
         } else {
             winParams.flags &= ~bits;
             if (mCustomView != null) {

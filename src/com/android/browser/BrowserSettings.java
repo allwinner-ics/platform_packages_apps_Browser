@@ -146,10 +146,6 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         if (sInitialized) {
             syncSharedSettings();
         }
-
-        if (mController != null && (mSearchEngine instanceof InstantSearchEngine)) {
-             ((InstantSearchEngine) mSearchEngine).setController(mController);
-        }
     }
 
     public void startManagingSettings(WebSettings settings) {
@@ -275,14 +271,18 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
             settings.setUserAgentString(USER_AGENTS[getUserAgent()]);
         }
 
+        boolean useInverted = useInvertedRendering();
         settings.setProperty(WebViewProperties.gfxInvertedScreen,
-                useInvertedRendering() ? "true" : "false");
+                useInverted ? "true" : "false");
+        if (useInverted) {
+            settings.setProperty(WebViewProperties.gfxInvertedScreenContrast,
+                    Float.toString(getInvertedContrast()));
+        }
 
-        settings.setProperty(WebViewProperties.gfxInvertedScreenContrast,
-                Float.toString(getInvertedContrast()));
-
-        settings.setProperty(WebViewProperties.gfxEnableCpuUploadPath,
-                enableCpuUploadPath() ? "true" : "false");
+        if (isDebugEnabled()) {
+            settings.setProperty(WebViewProperties.gfxEnableCpuUploadPath,
+                    enableCpuUploadPath() ? "true" : "false");
+        }
     }
 
     /**
@@ -301,6 +301,13 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         // enable smooth transition for better performance during panning or
         // zooming
         settings.setEnableSmoothTransition(true);
+        // WebView should be preserving the memory as much as possible.
+        // However, apps like browser wish to turn on the performance mode which
+        // would require more memory.
+        // TODO: We need to dynamically allocate/deallocate temporary memory for
+        // apps which are trying to use minimal memory. Currently, double
+        // buffering is always turned on, which is unnecessary.
+        settings.setProperty(WebViewProperties.gfxUseMinimalMemory, "false");
         // disable content url access
         settings.setAllowContentAccess(false);
 
@@ -347,9 +354,6 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         syncManagedSettings();
         if (PREF_SEARCH_ENGINE.equals(key)) {
             updateSearchEngine(false);
-        }
-        if (PREF_USE_INSTANT_SEARCH.equals(key)) {
-            updateSearchEngine(true);
         }
         if (PREF_FULLSCREEN.equals(key)) {
             if (mController.getUi() != null) {
@@ -419,10 +423,6 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
                 mSearchEngine.close();
              }
             mSearchEngine = SearchEngines.get(mContext, searchEngineName);
-
-             if (mController != null && (mSearchEngine instanceof InstantSearchEngine)) {
-                 ((InstantSearchEngine) mSearchEngine).setController(mController);
-             }
          }
     }
 
@@ -729,17 +729,16 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         }
 		/* modified by Gary. start {{----------------------------------- */
     	/* 2011-11-29 */
-    	/* add callback for parsing 3d source */
+    	/* don't show javascript console */
         return mPrefs.getBoolean(PREF_JAVASCRIPT_CONSOLE, false);
 		/* add by Gary. end   -----------------------------------}} */
-	}
+    }
 
     public boolean isSmallScreen() {
         if (!isDebugEnabled()) {
             return false;
         }
         return mPrefs.getBoolean(PREF_SMALL_SCREEN, false);
-
     }
 
     public boolean isWideViewport() {
@@ -794,10 +793,6 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
 
     public boolean useMostVisitedHomepage() {
         return HomeProvider.MOST_VISITED.equals(getHomePage());
-    }
-
-    public boolean useInstantSearch() {
-        return mPrefs.getBoolean(PREF_USE_INSTANT_SEARCH, false);
     }
 
     public boolean useFullscreen() {
