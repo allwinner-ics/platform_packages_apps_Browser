@@ -19,6 +19,7 @@ package com.android.browser;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.SearchManager;
+import android.content.ActivityNotFoundException;
 import android.content.ClipboardManager;
 import android.content.ContentProvider;
 import android.content.ContentProviderClient;
@@ -1093,7 +1094,12 @@ public class Controller
                 mActivity.getComponentName().flattenToString());
         intent.putExtra(SEND_APP_ID_EXTRA, false);
         intent.putExtra(RecognizerIntent.EXTRA_WEB_SEARCH_ONLY, true);
-        mActivity.startActivity(intent);
+        try {
+			mActivity.startActivity(intent);
+		} catch (ActivityNotFoundException  e) {
+			// TODO Auto-generated catch block
+			Toast.makeText(mActivity, R.string.activity_not_found, Toast.LENGTH_LONG).show();
+		}
     }
 
     @Override

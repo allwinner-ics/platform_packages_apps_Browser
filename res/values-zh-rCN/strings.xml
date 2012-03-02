@@ -392,4 +392,7 @@
     <!-- modify the user agent's name string -->
     <string name="pref_development_uastring" translatable="false">浏览器模式</string>
     <!-- add by Gary. enddddddddddddddddddddddddddddddddddddddddd -->
+    
+    <!-- add by Bevis, Toast msg when activity not found exception-->
+    <string name="activity_not_found">找不到合适的应用程序.</string>
 </resources>
